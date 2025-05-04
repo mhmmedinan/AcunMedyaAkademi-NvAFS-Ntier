@@ -1,18 +1,19 @@
-using Business.Abstracts;
-using Business.Concretes;
-using Microsoft.EntityFrameworkCore;
-using Repositories.Abstracts;
-using Repositories.Concretes.EntityFramework;
-using Repositories.Concretes.EntityFramework.Contexts;
+using Business;
+using Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<BaseDbContext>(op => op.UseSqlServer(builder.Configuration.GetConnectionString("BaseDb")));
+
+builder.Services.AddRepositoriesServices(builder.Configuration);
+
+builder.Services.AddBusinessServices(); 
 
 
-builder.Services.AddScoped<IBrandService, BrandManager>();          //Her http request icin bir kez olusturulur
-builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+
+
+
+//AddScoped => //Her http request icin bir kez olusturulur
 
 //AddSingleton => Uygulama basladýgýnda bir kez olusturulur. Cok sýk kullanýlan ve degismeyen yapýlar icin. Cache islemleri,Config islemleri
 //AddTransiet => Her kullanýmda yeni bir nesne olusturur. çok hafif objeler veya baðýmsýz iþ yapan küçük servisler için tercih edilir.=> EmailSenderService
