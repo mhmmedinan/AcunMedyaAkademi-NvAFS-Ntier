@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Repositories.Abstracts;
-using Repositories.Concretes.EntityFramework;
 using Repositories.Concretes.EntityFramework.Contexts;
 using System.Reflection;
 
