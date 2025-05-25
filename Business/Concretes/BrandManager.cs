@@ -21,6 +21,8 @@ public class BrandManager : IBrandService
         _brandBusinessRules = brandBusinessRules;
     }
 
+    
+
     public CreatedBrandResponse Add(CreateBrandRequest request)
     {
         //ManualMapping

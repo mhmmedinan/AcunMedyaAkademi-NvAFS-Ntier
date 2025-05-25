@@ -1,6 +1,8 @@
 ﻿using Business.Abstracts;
+using Business.Constants;
 using Business.Dtos.Requests.Model;
 using Business.Dtos.Responses.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -24,6 +26,7 @@ namespace WebAPI.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles =OperationClaims.Admin)]
         public ActionResult<List<GetListModelResponse>> GetAll()
         {
             return Ok(_modelService.GetList());
